@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Gönderi Bilgileri</h2>
+    <div class="gonderi-detay">
+        <p><strong>Takip No:</strong> {{ kargo.takip_no }}</p>
+        <p><strong>Alıcı:</strong> {{ kargo.alici }}</p>
+        <p><strong>Adres:</strong> {{ kargo.adres }}</p>
+        <p><strong>Teslim Tarihi:</strong> {{ kargo.teslim_tarihi }}</p>
+    </div>
+    <hr>
+<h3>Gönderi Hareket Bilgileri</h3>
+        <div class="timeline">
+            
+            {% if kargo.asama >= 5 %}
+            <div class="timeline-item active">
+                <div class="timeline-title">Kargo Dağıtımda</div>
+                <div class="timeline-date">Kurye teslimat adresine doğru yola çıktı.</div>
+            </div>
+            {% endif %}
+
+            {% if kargo.asama >= 4 %}
+            <div class="timeline-item {% if kargo.asama == 4 %}active{% endif %}">
+                <div class="timeline-title">Teslimat Şubesinde</div>
+                <div class="timeline-date">Gönderi varış şubesine ulaştı, dağıtım bekleniyor.</div>
+            </div>
+            {% endif %}
+
+            {% if kargo.asama >= 3 %}
+            <div class="timeline-item {% if kargo.asama == 3 %}active{% endif %}">
+                <div class="timeline-title">Transfer Sürecinde</div>
+                <div class="timeline-date">Gönderi aktarma merkezinden yola çıktı.</div>
+            </div>
+            {% endif %}
+
+            {% if kargo.asama >= 2 %}
+            <div class="timeline-item {% if kargo.asama == 2 %}active{% endif %}">
+                <div class="timeline-title">Aktarma Merkezinde</div>
+                <div class="timeline-date">Gönderi transfer merkezine ulaştı ve işlendi.</div>
+            </div>
+            {% endif %}
+
+            {% if kargo.asama >= 1 %}
+            <div class="timeline-item {% if kargo.asama == 1 %}active{% endif %}">
+                <div class="timeline-title">Kargo Kabul Edildi</div>
+                <div class="timeline-date">Gönderi çıkış şubesinde teslim alındı.</div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
