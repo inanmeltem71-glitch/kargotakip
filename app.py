@@ -1,3 +1,14 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+application = app  # Vercel'in uygulamayı tanıması için bu satır çok önemli!
+
+@app.route('/')
+def index():
+    return render_template('takip.html')
+
+if name == '__main__':
+    app.run(debug=True)
 import os
 from flask import Flask, render_template, abort
 from supabase import create_client, Client
